@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-between">
+    <div class="card" style="width: 18rem;" *ngFor="let forecast of _service.getCurrentWeather">
+        <div class="card" style="width: 18rem;">
+            <h4 class="card-title">Current Weather in:</h4>
+            <img src="../../../assets/Icons/{{forecast.WeatherIcon}}.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{forecast.WeatherText}}</h5>
+                <p class="card-text">Temperature: {{forecast.Temperature.Metric.Value}}</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <input type="search" placeholder="Search " [formControl]="control" [matAutocomplete]="auto"
+                [(ngModel)]='searchValue'>
+            <mat-autocomplete #auto="matAutocomplete">
+
+                <div *ngIf="filteredCities">
+                    <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        <div><b>{{city}}</b></div>
+                    </mat-option>
+                </div>
+            </mat-autocomplete>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                (click)="_service.getLocationKey(searchValue) ">Search</button>
+        </div>
+    </div>
+    <div>
+        <br>
+        <input type="image" src="../../../assets/Icons/{{_service.followOrUnfollow}}.png" (click)="_service.addOrRemoveFavorite()" />
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 18rem;" *ngFor="let forecast of _service.forecastArr">
+        <img src="../../../assets/Icons/{{forecast.Day.Icon}}.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{forecast.Date}}</h5>
+            <p class="card-text">Temperature:<br> Minimum: {{forecast.Temperature.Minimum.Value}} <br> Maximum:
+                {{forecast.Temperature.Maximum.Value}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Day: {{forecast.Day.IconPhrase}}</li>
+            <li class="list-group-item">Night: {{forecast.Night.IconPhrase}}</li>
+        </ul>
+        <div class="card-body">
+            <a href="{{forecast.MobileLink}}" class="card-link">MobileLink</a>
+            <a href="{{forecast.Link}}" class="card-link">Link</a>
+        </div>
+    </div>
+</div>
+

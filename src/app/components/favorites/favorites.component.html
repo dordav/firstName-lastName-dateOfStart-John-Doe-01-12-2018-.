@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-around">
+  <div class="card" style="width: 18rem;" *ngFor="let forecast of _service.favoritesCitiesRes">
+      <h4 class="card-title">{{forecast.cityName}}</h4>
+    <img src="../../../assets/Icons/{{forecast.WeatherIcon}}.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{forecast.WeatherText}}</h5>
+      <p class="card-text">Temperature: {{forecast.Temperature.Metric.Value}}</p>
+    </div>
+  </div>
+</div>
