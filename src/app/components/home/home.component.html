@@ -2,7 +2,7 @@
     <div class="card" style="width: 18rem;" *ngFor="let forecast of _service.getCurrentWeather">
         <div class="card" style="width: 18rem;">
             <h4 class="card-title">Current Weather in:</h4>
-            <img src="../../../assets/Icons/{{forecast.WeatherIcon}}.png" class="card-img-top" alt="...">
+            <img src="https://developer.accuweather.com/sites/default/files/{{forecast.WeatherIcon}}-s.png" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{forecast.WeatherText}}</h5>
                 <p class="card-text">Temperature: {{forecast.Temperature.Metric.Value}}</p>
