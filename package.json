@@ -10,6 +10,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "12.6.0",
+    "npm": "6.9.0"
+  },
   "private": true,
   "dependencies": {
      "typescript": "~3.5.3",	
